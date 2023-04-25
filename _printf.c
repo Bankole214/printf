@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 
-void print_con(char con[], int *buff_ind);
+void print_con(char con[], int *con_index);
 
 /**
  * _printf - Printf function
@@ -11,58 +11,59 @@ void print_con(char con[], int *buff_ind);
  */
 int _printf(const char *format, ...)
 {
-	int a, printed = 0, printed_chars = 0;
-	int flags, width, precision, size, buff_ind = 0;
+	int a, print_out = 0, chars_printed = 0;
+	int flags, width, precision_value, cast_size, con_index = 0;
 	va_list list;
-	char con[BUFF_SIZE];
+	char con[CON_SIZE];
 
 	if (format == NULL)
 		return (-1);
 
 	va_start(list, format);
 
-	for (a = 0; format && format[i] != '\0'; a++)
+	for (a = 0; format && format[a] != '\0'; a++)
 	{
-		if (format[i] != '%')
+		if (format[a] != '%')
 		{
-			con[buff_ind++] = format[a];
-			if (buff_ind == BUFF_SIZE)
-				print_con(con, &buff_ind);
-			/* write(1, &format[a], 1);*/
-			printed_chars++;
+			con[con_index++] = format[a];
+			if (con_index == CON_SIZE)
+				print_con(con, &con_index);
+
+			chars_printed++;
 		}
+
 		else
 		{
-			print_con(con, &buff_ind);
+			print_con(con, &con_index);
 			flags = get_flags(format, &a);
 			width = get_width(format, &a, list);
-			precision = get_precision(format, &a, list);
-			size = get_size(format, &a);
+			precision_value = get_precision(format, &a, list);
+			cast_size = get_size(format, &a);
 			++a;
-			printed = handle_print(format, &a, list, con,
-				flags, width, precision, size);
-			if (printed == -1)
+			print_out = handle_print(format, &a, list, con,
+				flags, width, precision_value, cast_size);
+			if (print_out == -1)
 				return (-1);
-			printed_chars += printed;
+			chars_printed = chars_printed + print_out;
 		}
 	}
 
-	print_con(con, &buff_ind);
+	print_con(con, &con_index);
 
 	va_end(list);
 
-	return (printed_chars);
+	return (chars_printed);
 }
 
 /**
- * print_con - Prints the contents of the buffer if it exist
+ * print_con - Prints the contents of the container if it exists
  * @con: Array of chars
- * @buff_ind: Index at which to add next char, represents the length.
+ * @con_index: represents the length.
  */
-void print_con(char con[], int *buff_ind)
+void print_con(char con[], int *con_index)
 {
-	if (*buff_ind > 0)
-		write(1, &con[0], *buff_ind);
+	if (*con_index > 0)
+		write(1, &con[0], *con_index);
 
-	*buff_ind = 0;
+	*con_index = 0;
 }
