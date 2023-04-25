@@ -19,7 +19,7 @@
 #define SHOR_T 1
 
 /**
- * struct fmt - Struct op
+ * struct fmt_s - Struct op
  *
  * @fmt_s: The format.
  * @fn: The function associated.
@@ -41,7 +41,7 @@ typedef struct fmt_s fmt_t;
 
 int _printf(const char *format, ...);
 int handle_print(const char *fmt_s, int *p,
-va_list list, char con[], int flags, int width, int precision_value, int cast_size);
+va_list list, char con[], int flags, int width, int prec, int cast_size);
 
 /*FUNCTIONS*/
 
@@ -68,7 +68,7 @@ int print_hexa_upper(va_list types, char con[],
 	int flags, int width, int precision_value, int cast_size);
 
 int print_hexa(va_list types, char hex_map[],
-char con[], int flags, char flag_ch, int width, int precision_value, int cast_size);
+char con[], int flags, char flag_ch, int width, int prec, int cast_size);
 
 /* Function to print non printable characters */
 int print_non_printable(va_list types, char con[],
@@ -97,12 +97,12 @@ int handle_write_char(char ch, char con[],
 	int flags, int width, int precision_value, int cast_size);
 int write_number(int its_positive, int index, char con[],
 	int flags, int width, int precision_value, int cast_size);
-int write_num(int index, char bff[], int flags, int width, int precision_value,
-	int len, char padding_char, char extra_char);
+int write_num(int ind, char con[], int flags, int width, int prec,
+	int length, char padd, char extra_c);
 int write_pointer(char con[], int index, int len,
 	int width, int flags, char padding_char, char extra_char, int start_padding);
 
-int unsgnd_num(int its_negative, int index,char con[],
+int unsgnd_num(int its_negative, int index, char con[],
 	int flags, int width, int precision_value, int cast_size);
 
 /* UTILS.c */

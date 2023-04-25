@@ -61,68 +61,66 @@ int write_number(int its_negative, int index, char con[],
 		extra_ch = '+';
 	else if (flags & F_SPACE)
 		extra_ch = ' ';
-	return (write_num(index, buffer, flags, width, precision_value,
+	return (write_num(index, con, flags, width, precision_value,
 		length, padding_char, extra_ch));
 }
 /**
  * write_num - Write a number
- * @index: Index
+ * @ind: Index
  * @con: container
  * @flags: Flags
  * @width: width
- * @precision: Precision specifier
- * @len: length
- * @padding_char: Padding char
- * @extra_char: Extra character
+ * @prec: Precision specifier
+ * @length: length
+ * @padd: Padding char
+ * @extra_c: Extra character
  * Return: Number of printed chars.
  */
-int write_num(int index, char con[],
-	int flags, int width, int precision,
-	int len, char padding_char, char extra_char)
+int write_num(int ind, char con[],
+	int flags, int width, int prec,
+	int length, char padd, char extra_c)
 {
-	int a, start_padding = 1;
+	int i, padd_start = 1;
 
-	if (precision == 0 && index == CON_SIZE - 2 &&
-			con[index] == '0' && width == 0)
-		return (0);
-	if (precision == 0 && index == CON_SIZE - 2 && con[index] == '0')
-		con[index] = padding_char = ' ';
-	if (precision > 0 && precision < len)
-		padding_char = ' ';
-	while (precision > len)
-		con[--index] = '0', len++;
-	if (extra_char != 0)
-		len++;
-	if (width > len)
+	if (prec == 0 && ind == BUFF_SIZE - 2 && con[ind] == '0' && width == 0)
+		return (0); /* printf(".0d", 0)  no char is printed */
+	if (prec == 0 && ind == BUFF_SIZE - 2 && con[ind] == '0')
+		con[ind] = padd = ' '; /* width is displayed with padding ' ' */
+	if (prec > 0 && prec < length)
+		padd = ' ';
+	while (prec > length)
+		con[--ind] = '0', length++;
+	if (extra_c != 0)
+		length++;
+	if (width > length)
 	{
-		for (a = 1; a < width - len + 1; a++)
-			con[a] = padding_char;
-	 con[a] = '\0';
-	if (flags & F_MINUS && padding_char == ' ')
-{
-		if (extra_char)
-			con[--index] = extra_char;
-	return (write(1, &con[index], len) + write(1, &con[1], a - 1));
-}
-	else if (!(flags & F_MINUS) && padding_char == ' ')
-	{
-		if (extra_char)
-			con[--index] = extra_char;
-	return (write(1, &con[1], a - 1) + write(1, &con[index], len));
+		for (i = 1; i < width - length + 1; i++)
+			con[i] = padd;
+		con[i] = '\0';
+		if (flags & F_MINUS && padd == ' ')/* Asign extra char to left of con */
+		{
+			if (extra_c)
+				con[--ind] = extra_c;
+			return (write(1, &con[ind], length) + write(1, &con[1], i - 1));
+		}
+		else if (!(flags & F_MINUS) && padd == ' ')/* extra char to left of buff */
+		{
+			if (extra_c)
+				con[--ind] = extra_c;
+			return (write(1, &con[1], i - 1) + write(1, &con[ind], length));
+		}
+		else if (!(flags & F_MINUS) && padd == '0')/* extra char to left of padd */
+		{
+			if (extra_c)
+				con[--padd_start] = extra_c;
+			return (write(1, &con[padd_start], i - padd_start) +
+				write(1, &con[ind], length - (1 - padd_start)));
+		}
 	}
-	else if (!(flags & F_MINUS) && padding_char == '0')
-	{
-		if (extra_char)
-			con[--start_padding] = extra_char;
-	return (write(1, &con[start_padding], a - start_padding) +
-		write(1, &con[index], len - (1 - start_padding)));
-	}
+	if (extra_c)
+		con[--ind] = extra_c;
+	return (write(1, &con[ind], length));
 }
-	if (extra_char)
-	con[--index] = extra_char;
-	return (write(1, &con[index], len));
-}
-
 /**
  * unsgnd_num - Writes an unsigned number
  * @its_negative: Number indicating if the number is negative
