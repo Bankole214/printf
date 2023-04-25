@@ -72,49 +72,49 @@ int write_number(int its_negative, int index, char con[],
  * @width: width
  * @prec: Precision specifier
  * @length: length
- * @padd: Padding char
- * @extra_c: Extra character
+ * @padding_char: Padding char
+ * @extra_char: Extra character
  * Return: Number of printed chars.
  */
 int write_num(int ind, char con[],
 	int flags, int width, int prec,
-	int length, char padd, char extra_c)
+	int length, char padding_char, char extra_char)
 {
-	int i, padd_start = 1;
+	int i, start_padding = 1;
 
-	if (prec == 0 && ind == BUFF_SIZE - 2 && con[ind] == '0' && width == 0)
-		return (0); /* printf(".0d", 0)  no char is printed */
-	if (prec == 0 && ind == BUFF_SIZE - 2 && con[ind] == '0')
-		con[ind] = padd = ' '; /* width is displayed with padding ' ' */
+	if (prec == 0 && ind == CON_SIZE - 2 && con[ind] == '0' && width == 0)
+		return (0);
+	if (prec == 0 && ind == CON_SIZE - 2 && con[ind] == '0')
+		con[ind] = padding_char = ' '; /* width is displayed with padding_char ' ' */
 	if (prec > 0 && prec < length)
-		padd = ' ';
+		padding_char = ' ';
 	while (prec > length)
 		con[--ind] = '0', length++;
-	if (extra_c != 0)
+	if (extra_char != 0)
 		length++;
 	if (width > length)
 	{
 		for (i = 1; i < width - length + 1; i++)
-			con[i] = padd;
+			con[i] = padding_char;
 		con[i] = '\0';
-		if (flags & F_MINUS && padd == ' ')/* Asign extra char to left of con */
+		if (flags & F_MINUS && padding_char == ' ')
 		{
-			if (extra_c)
-				con[--ind] = extra_c;
+			if (extra_char)
+				con[--index] = extra_c;
 			return (write(1, &con[ind], length) + write(1, &con[1], i - 1));
 		}
-		else if (!(flags & F_MINUS) && padd == ' ')/* extra char to left of buff */
+		else if (!(flags & F_MINUS) && padding_char == ' ')
 		{
 			if (extra_c)
 				con[--ind] = extra_c;
 			return (write(1, &con[1], i - 1) + write(1, &con[ind], length));
 		}
-		else if (!(flags & F_MINUS) && padd == '0')/* extra char to left of padd */
+		else if (!(flags & F_MINUS) && padding_char == '0')
 		{
 			if (extra_c)
-				con[--padd_start] = extra_c;
-			return (write(1, &con[padd_start], i - padd_start) +
-				write(1, &con[ind], length - (1 - padd_start)));
+				con[--start_padding] = extra_c;
+			return (write(1, &con[start_padding], i - start_padding) +
+				write(1, &con[ind], length - (1 - start_padding)));
 		}
 	}
 	if (extra_c)
@@ -174,9 +174,9 @@ int unsgnd_num(int its_negative, int index,
  * @len: Length
  * @width: Width specifier
  * @flags: Flags specifier
- * @padding_char: Char representing the padding
+ * @padding_char: Char representing the padding_charing
  * @extra_char: Char representing extra char
- * @start_padding: where the padding should start
+ * @start_padding: where the padding_char should start
  * Return: Number of written chars.
  */
 int write_pointer(char con[], int index, int len,
@@ -211,13 +211,13 @@ int write_pointer(char con[], int index, int len,
 				con[--start_padding] = extra_char;
 			con[1] = '0';
 			con[2] = 'x';
-			return (write(1, &con[start_padding], a - start_padding) +
-					write(1, &con[index], len - (1 - start_padding) - 2));
+			return (write(1, &con[start_paddin], a - start_padding) +
+					write(1, &con[index], len - (1 - start_padding - 2)));
 		}
 	}
 	con[--index] = 'x';
 	con[--index] = '0';
 	if (extra_char)
 		con[--index] = extra_char;
-	return (write(1, &con[index], CON_SIZE - index - 1));
+i	return (write(1, &con[index], CON_SIZE - index - 1));
 }

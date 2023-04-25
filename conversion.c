@@ -119,22 +119,21 @@ int print_hexa_upper(va_list types, char con[],
  * @flags:  Calculates active flags
  * @flag_char: Calculates active flags
  * @width: get width
-<<<<<<< HEAD
  * @prec: Precision specification
  * @size: Size specifier
  * @size: Size specification
  * Return: Number of chars printed
  */
 int print_hexa(va_list types, char hex_map[], char con[],
-	int flags, char flag_ch, int width, int prec, int size)
-=======
+	int flags, char flag_char, int width, int prec, int size)
+/*
  * @precision_value: Precision specification
  * @data_size: Size specification
  * Return: Number of chars printed
  */
 int print_hexa(va_list types, char map_to[], char con[],
 	int flags, char flag_char, int width, int precision_value, int data_size)
->>>>>>> c5ab910c8a985381a41cd8a028018810d78aa78a
+
 {
 	int i = CON_SIZE - 2;
 	unsigned long int num = va_arg(types, unsigned long int);
@@ -163,9 +162,7 @@ int print_hexa(va_list types, char map_to[], char con[],
 
 	i++;
 
-<<<<<<< HEAD
 	return (write_unsgnd(0, i, con, flags, width, prec, size));
-=======
 	return (write_unsgnd(0, i, con, flags, width, precision_value, data_size));
->>>>>>> c5ab910c8a985381a41cd8a028018810d78aa78a
+
 }
