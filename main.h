@@ -45,6 +45,9 @@ int handle_print(const char *fmt_s, int *p,
 va_list list, char con[], int flags, int width, int prec, int data_size;
 va_list list, char con[], int flags, int width,
 int precision_value, int data_size;
+va_list list, char con[], int flags, int width, int prec, int cast_size);
+va_list list, char con[], int flags, int width,
+int precision_value, int data_size;
 
 
 /*FUNCTIONS*/
@@ -72,7 +75,9 @@ int print_hexa_upper(va_list types, char con[],
 	int flags, int width, int precision_value, int data_size);
 
 int print_hexa(va_list types, char hex_map[],
-char con[], int flags, char flag_ch, int width, int prec, int data_size);
+
+char con[], int flags, char flag_ch, int width, int prec, int data_size
+char con[], int flags, char flag_ch, int width, int prec, int cast_size);
 char con[], int flags, char flag_ch, int width,
 int precision_value, int data_size;
 
@@ -105,6 +110,7 @@ int write_number(int its_positive, int index, char con[],
 	int flags, int width, int precision_value, int cast_size);
 int write_num(int ind, char con[], int flags, int width, int prec,
 	int flags, int width, int precision_value, int data_size);
+
 int write_num(int index, char bff[], int flags, int width, int precision_value,
 	int len, char padding_char, char extra_char);
 int write_pointer(char con[], int index, int len,
@@ -112,6 +118,8 @@ int write_pointer(char con[], int index, int len,
 
 int unsgnd_num(int its_negative, int index, char con[],
 	int flags, int width, int precision_value, int data_size);
+
+	int flags, int width, int precision_value, int data_size;
 
 /* UTILS.c */
 int printable_c(char);
