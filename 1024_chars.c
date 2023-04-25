@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * get_precision - Calculates the precision value
+ * get_precision_value - Calculates the precision value
  * @format: Formatted string
  * @a: List of arguments to be printed.
  * @list: list of arguments.
  *
  * Return: Precision value
  */
-int get_precision(const char *format, int *a, va_list list)
+int get_precision_value(const char *format, int *a, va_list list)
 {
 	int pres_index = *a + 1;
 	int precision_value = -1;
