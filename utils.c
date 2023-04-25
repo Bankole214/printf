@@ -57,15 +57,15 @@ int is_digit(char ch)
 /**
  * convert_size_num - Casts a number to the specified size
  * @num_to_cast: Number to be casted.
- * @cast_size: Number indicating the type to be casted.
+ * @data_size: Number indicating the type to be casted.
  *
  * Return: Casted value of num_to_cast
  */
-long int convert_size_num(long int num_to_cast, int cast_size)
+long int convert_size_num(long int num_to_cast, int data_size)
 {
-	if (cast_size == LON_G)
+	if (data_size == LON_G)
 		return (num_to_cast);
-	else if (cast_size == SHOR_T)
+	else if (data_size == SHOR_T)
 		return ((short)num_to_cast);
 
 	return ((int)num_to_cast);
@@ -74,16 +74,16 @@ long int convert_size_num(long int num_to_cast, int cast_size)
 /**
  * convert_size - Casts a number to the specified size
  * @num_to_cast: Number to be casted
- * @cast_size: Number indicating the type to be casted
+ * @data_size: Number indicating the type to be casted
  *
  * Return: Casted value of num_to_cast
  */
-long int convert_size(unsigned long int num_to_cast, int cast_size)
+long int convert_size(unsigned long int num_to_cast, int data_size)
 {
-	if (cast_size == LON_G)
+	if (data_size == LON_G)
 		return (num_to_cast);
 
-	else if (cast_size == SHOR_T)
+	else if (data_size == SHOR_T)
 		return ((unsigned short)num_to_cast);
 
 	return ((unsigned int)num_to_cast);

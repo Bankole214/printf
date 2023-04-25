@@ -41,42 +41,52 @@ typedef struct fmt_s fmt_t;
 
 int _printf(const char *format, ...);
 int handle_print(const char *fmt_s, int *p,
+<<<<<<< HEAD
 va_list list, char con[], int flags, int width, int prec, int cast_size);
+=======
+va_list list, char con[], int flags, int width,
+int precision_value, int data_size);
+>>>>>>> c5ab910c8a985381a41cd8a028018810d78aa78a
 
 /*FUNCTIONS*/
 
 /* Funtions to print chars and strings */
 int print_char(va_list types, char con[],
-	int flags, int width, int precision_value, int cast_size);
+	int flags, int width, int precision_value, int data_size);
 int print_string(va_list types, char con[],
-	int flags, int width, int precision_value, int cast_size);
+	int flags, int width, int precision_value, int data_size);
 int print_percent(va_list types, char con[],
-	int flags, int width, int precision_value, int cast_size);
+	int flags, int width, int precision_value, int data_size);
 
 /* Functions to print numbers */
 int print_int(va_list types, char con[],
-	int flags, int width, int precision_value, int cast_size);
+	int flags, int width, int precision_value, int data_size);
 int print_binary(va_list types, char con[],
-	int flags, int width, int precision_value, int cast_size);
+	int flags, int width, int precision_value, int data_size);
 int print_unsigned(va_list types, char con[],
-	int flags, int width, int precision_value, int cast_size);
+	int flags, int width, int precision_value, int data_size);
 int print_octal(va_list types, char con[],
-	int flags, int width, int precision_value, int cast_size);
+	int flags, int width, int precision_value, int data_size);
 int print_hexadecimal(va_list types, char con[],
-	int flags, int width, int precision_value, int cast_size);
+	int flags, int width, int precision_value, int data_size);
 int print_hexa_upper(va_list types, char con[],
-	int flags, int width, int precision_value, int cast_size);
+	int flags, int width, int precision_value, int data_size);
 
 int print_hexa(va_list types, char hex_map[],
+<<<<<<< HEAD
 char con[], int flags, char flag_ch, int width, int prec, int cast_size);
+=======
+char con[], int flags, char flag_ch, int width,
+int precision_value, int data_size);
+>>>>>>> c5ab910c8a985381a41cd8a028018810d78aa78a
 
 /* Function to print non printable characters */
 int print_non_printable(va_list types, char con[],
-	int flags, int width, int precision_value, int cast_size);
+	int flags, int width, int precision_value, int data_size);
 
 /* Funcion to print memory address */
 int print_pointer(va_list types, char con[],
-	int flags, int width, int precision_value, int cast_size);
+	int flags, int width, int precision_value, int data_size);
 
 /* Functions to handle other specifiers */
 int get_flags(const char *format, int *a);
@@ -85,32 +95,42 @@ int get_precision_value(const char *format, int *a, va_list list);
 int get_size(const char *format, int *a);
 
 /*Function to print string in reverse*/
-int print_reverse(va_list types, char con[],
-	int flags, int width, int precision_value, int cast_size);
+int print_rev(va_list types, char con[],
+	int flags, int width, int precision_value, int data_size);
 
 /*Function to print a string in rot 13*/
 int print_rot13(va_list types, char con[],
-	int flags, int width, int precision_value, int cast_size);
+	int flags, int width, int precision_value, int data_size);
 
 /* width handler */
 int handle_write_char(char ch, char con[],
-	int flags, int width, int precision_value, int cast_size);
+	int flags, int width, int precision_value, int data_size);
 int write_number(int its_positive, int index, char con[],
+<<<<<<< HEAD
 	int flags, int width, int precision_value, int cast_size);
 int write_num(int ind, char con[], int flags, int width, int prec,
 	int length, char padd, char extra_c);
+=======
+	int flags, int width, int precision_value, int data_size);
+int write_num(int index, char bff[], int flags, int width, int precision_value,
+	int len, char padding_char, char extra_char);
+>>>>>>> c5ab910c8a985381a41cd8a028018810d78aa78a
 int write_pointer(char con[], int index, int len,
 	int width, int flags, char padding_char, char extra_char, int start_padding);
 
 int unsgnd_num(int its_negative, int index, char con[],
+<<<<<<< HEAD
 	int flags, int width, int precision_value, int cast_size);
+=======
+	int flags, int width, int precision_value, int data_size);
+>>>>>>> c5ab910c8a985381a41cd8a028018810d78aa78a
 
 /* UTILS.c */
 int printable_c(char);
 int append_hexa(char, char[], int);
 int is_digit(char);
 
-long int convert_size_num(long int num_to_cast, int cast_size);
-long int convert_size(unsigned long int num_to_cast int cast_size);
+long int convert_size_num(long int num_to_cast, int data_size);
+long int convert_size(unsigned long int num_to_cast int data_size);
 
 #endif

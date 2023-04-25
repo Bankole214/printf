@@ -6,17 +6,17 @@
  * @flags: Calculates active flags.
  * @width: width.
  * @precision_value: precision
- * @cast_size: Size
+ * @data_size: Size
  * Return: Number of ch printed.
  */
 int handle_write_char(char ch, char con[],
-	int flags, int width, int precision_value, int cast_size)
+	int flags, int width, int precision_value, int data_size)
 {
 	int a = 0;
 	char padding_char = ' ';
 
 	UNUSED(precision_value);
-	UNUSED(cast_size);
+	UNUSED(data_size);
 	if (flags & F_ZERO)
 		padding_char = '0';
 	con[a++] = c;
@@ -43,16 +43,16 @@ int handle_write_char(char ch, char con[],
  * @flags: Calculates active flags
  * @width: get width.
  * @precision_value: precision specifier
- * @cast_size: Size specifier
+ * @data_size: Size specifier
  * Return: Number of ch printed.
  */
 int write_number(int its_negative, int index, char con[],
-	int flags, int width, int precision_value, int cast_size)
+	int flags, int width, int precision_value, int data_size)
 {
 	int len = CON_SIZE - index - 1;
 	char padding_char = ' ', extra_ch = 0;
 
-	UNUSED(cast_size);
+	UNUSED(data_size);
 	if ((flags & F_ZERO) && !(flags & F_MINUS))
 		padding_char = '0';
 	if (its_negative)
@@ -129,17 +129,17 @@ int write_num(int ind, char con[],
  * @flags: Flags specifiers
  * @width: Width value
  * @precision_value: Precision
- * @cast_size: Size specifier
+ * @data_size: Size specifier
  * Return: Number of written chars.
  */
 int unsgnd_num(int its_negative, int index,
-	char con[], int flags, int width, int precision_value, int cast_size)
+	char con[], int flags, int width, int precision_value, int data_size)
 {
 	int len = CON_SIZE - index - 1, a = 0;
 	char padding_char = ' ';
 
 	UNUSED(its_negative);
-	UNUSED(cast_size);
+	UNUSED(data_size);
 	if (precision_value == 0 && index == CON_SIZE - 2 && con[index] == '0')
 		return (0);
 	if (precision_value > 0 && precision_value < len)
