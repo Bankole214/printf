@@ -41,12 +41,9 @@ typedef struct fmt_s fmt_t;
 
 int _printf(const char *format, ...);
 int handle_print(const char *fmt_s, int *p,
-<<<<<<< HEAD
 va_list list, char con[], int flags, int width, int prec, int cast_size);
-=======
 va_list list, char con[], int flags, int width,
-int precision_value, int data_size);
->>>>>>> c5ab910c8a985381a41cd8a028018810d78aa78a
+int precision_value, int data_size;
 
 /*FUNCTIONS*/
 
@@ -73,12 +70,9 @@ int print_hexa_upper(va_list types, char con[],
 	int flags, int width, int precision_value, int data_size);
 
 int print_hexa(va_list types, char hex_map[],
-<<<<<<< HEAD
 char con[], int flags, char flag_ch, int width, int prec, int cast_size);
-=======
 char con[], int flags, char flag_ch, int width,
-int precision_value, int data_size);
->>>>>>> c5ab910c8a985381a41cd8a028018810d78aa78a
+int precision_value, int data_size;
 
 /* Function to print non printable characters */
 int print_non_printable(va_list types, char con[],
@@ -106,24 +100,18 @@ int print_rot13(va_list types, char con[],
 int handle_write_char(char ch, char con[],
 	int flags, int width, int precision_value, int data_size);
 int write_number(int its_positive, int index, char con[],
-<<<<<<< HEAD
 	int flags, int width, int precision_value, int cast_size);
 int write_num(int ind, char con[], int flags, int width, int prec,
 	int length, char padd, char extra_c);
-=======
-	int flags, int width, int precision_value, int data_size);
+	int flags, int width, int precision_value, int data_size;
 int write_num(int index, char bff[], int flags, int width, int precision_value,
 	int len, char padding_char, char extra_char);
->>>>>>> c5ab910c8a985381a41cd8a028018810d78aa78a
 int write_pointer(char con[], int index, int len,
 	int width, int flags, char padding_char, char extra_char, int start_padding);
 
 int unsgnd_num(int its_negative, int index, char con[],
-<<<<<<< HEAD
 	int flags, int width, int precision_value, int cast_size);
-=======
-	int flags, int width, int precision_value, int data_size);
->>>>>>> c5ab910c8a985381a41cd8a028018810d78aa78a
+	int flags, int width, int precision_value, int data_size;
 
 /* UTILS.c */
 int printable_c(char);
