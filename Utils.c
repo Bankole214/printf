@@ -73,7 +73,7 @@ long int convert_size_num(long int num_to_cast, int cast_size)
 
 /**
  * convert_size - Casts a number to the specified size
- * @num_to_size: Number to be casted
+ * @num_to_cast: Number to be casted
  * @cast_size: Number indicating the type to be casted
  *
  * Return: Casted value of num_to_cast
