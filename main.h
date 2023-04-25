@@ -19,7 +19,7 @@
 #define SHOR_T 1
 
 /**
- * struct fmt - Struct op
+ * struct fmt_s - Struct op
  *
  * @fmt_s: The format.
  * @fn: The function associated.
@@ -41,7 +41,8 @@ typedef struct fmt_s fmt_t;
 
 int _printf(const char *format, ...);
 int handle_print(const char *fmt_s, int *p,
-va_list list, char con[], int flags, int width, int precision_value, int data_size);
+va_list list, char con[], int flags, int width,
+int precision_value, int data_size);
 
 /*FUNCTIONS*/
 
@@ -68,7 +69,8 @@ int print_hexa_upper(va_list types, char con[],
 	int flags, int width, int precision_value, int data_size);
 
 int print_hexa(va_list types, char hex_map[],
-char con[], int flags, char flag_ch, int width, int precision_value, int data_size);
+char con[], int flags, char flag_ch, int width,
+int precision_value, int data_size);
 
 /* Function to print non printable characters */
 int print_non_printable(va_list types, char con[],
@@ -85,7 +87,7 @@ int get_precision_value(const char *format, int *a, va_list list);
 int get_size(const char *format, int *a);
 
 /*Function to print string in reverse*/
-int print_reverse(va_list types, char con[],
+int print_rev(va_list types, char con[],
 	int flags, int width, int precision_value, int data_size);
 
 /*Function to print a string in rot 13*/
@@ -102,7 +104,7 @@ int write_num(int index, char bff[], int flags, int width, int precision_value,
 int write_pointer(char con[], int index, int len,
 	int width, int flags, char padding_char, char extra_char, int start_padding);
 
-int unsgnd_num(int its_negative, int index,char con[],
+int unsgnd_num(int its_negative, int index, char con[],
 	int flags, int width, int precision_value, int data_size);
 
 /* UTILS.c */
