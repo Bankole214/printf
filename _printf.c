@@ -12,7 +12,7 @@ void print_con(char con[], int *con_index);
 int _printf(const char *format, ...)
 {
 	int a, print_out = 0, chars_printed = 0;
-	int flags, width, precision_value, cast_size, con_index = 0;
+	int flags, width, precision_value, data_size, con_index = 0;
 	va_list list;
 	char con[CON_SIZE];
 
@@ -38,10 +38,10 @@ int _printf(const char *format, ...)
 			flags = get_flags(format, &a);
 			width = get_width(format, &a, list);
 			precision_value = get_precision(format, &a, list);
-			cast_size = get_size(format, &a);
+			data_size = get_size(format, &a);
 			++a;
 			print_out = handle_print(format, &a, list, con,
-				flags, width, precision_value, cast_size);
+				flags, width, precision_value, data_size);
 			if (print_out == -1)
 				return (-1);
 			chars_printed = chars_printed + print_out;

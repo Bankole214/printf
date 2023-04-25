@@ -5,14 +5,14 @@
  * @list: List of arguments to be printed.
  * @p: Pointer to the current position in the format string
  * @con: array to handle print.
- * @cast_size: the number of size casted
+ * @data_size: the number of size casted
  * @flags: flags
  * @width: the width
  * @precision_value: Precision
  * Return: 1 or 2
 */
 int handle_print(const char *fmt_s, int *p, va_list list, char con[],
-		int flags, int width, int precision_value, int cast_size)
+		int flags, int width, int precision_value, int data_size)
 {
 
 	/* Array of format types and their corresponding print functions */
@@ -28,7 +28,7 @@ int handle_print(const char *fmt_s, int *p, va_list list, char con[],
 /* Loop over the format types and call the corresponding print function */
 	for (a = 0; fmt_typ[a].fmt_s != '\0'; a++)
 		if (fmt_s[*p] == fmt_typ[a].fmt_s)
-			return (fmt_typ[a].fn(list, con, flags, width, precision_value, cast_size));
+			return (fmt_typ[a].fn(list, con, flags, width, precision_value, data_size));
 
 		if (fmt_typ[a].fmt_s == '\0')
 			/* If format is not recognized, print it as it is */

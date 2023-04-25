@@ -12,22 +12,22 @@ int get_size(const char *format, int *a)
 {
 	/*Get the next index of the format string*/
 	int pres_index = *a + 1;
-	int cast_size = 0;
+	int data_size = 0;
 
 /*Check if the format string has a 'l'*/
 	if (format[pres_index] == 'l')
-		cast_size = LON_G;
+		data_size = LON_G;
 
 /*Check if the format string has a 'h'*/
 	else if (format[pres_index] == 'h')
-		cast_size = SHOR_T;
+		data_size = SHOR_T;
 
 /*If there is no size,set the index to the previous value*/
-	if (cast_size == 0)
+	if (data_size == 0)
 		*a = pres_index - 1;
 	else
 		*a = pres_index;
 
  /*Return the size of the argument*/
-	return (cast_size);
+	return (data_size);
 }
