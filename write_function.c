@@ -11,18 +11,18 @@
  */
 int _putchar(char c)
 {
-	static char buf[1024];
-	static int i;
+	static char buffer[1024];
+	static int a;
 
-	if (c == -1 || i >= 1024)
+	if (c == -1 || a >= 1024)
 	{
-		write(1, &buf, i);
-		i = 0;
+		write(1, &buffer, a);
+		a = 0;
 	}
 	if (c != -1)
 	{
-		buf[i] = c;
-		i++;
+		buffer[a] = c;
+		a++;
 	}
 	return (1);
 }
@@ -34,9 +34,9 @@ int _putchar(char c)
  */
 int _puts(char *str)
 {
-	register int i;
+	register int w;
 
-	for (i = 0; str[i] != '\0'; i++)
-		_putchar(str[i]);
-	return (i);
+	for (w = 0; str[w] != '\0'; w++)
+		_putchar(str[w]);
+	return (w);
 }
