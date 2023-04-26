@@ -3,6 +3,8 @@
 
 #include <stdlib.h>
 #include <stdarg.h>
+#include <stdio.h>
+
 
 /**
  * struct flags - struct containing flags
