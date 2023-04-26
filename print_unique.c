@@ -21,7 +21,7 @@ int print_nonC(va_list list, flags_typ *p)
 		if (s[a] > 0 && (s[a] < 32 || s[a] >= 127))
 		{
 			_puts("\\x");
-			count = count + 2;
+			counter +=  2;
 			res = convert(s[a], 16, 0);
 			if (!res[1])
 				counter = counter + _putchar('0');

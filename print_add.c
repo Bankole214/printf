@@ -9,7 +9,7 @@
 int print_address(va_list list, flags_typ *p)
 {
 	char *str;
-	unsigned long int a = va_arg(l, unsigned long int);
+	unsigned long int a = va_arg(list, unsigned long int);
 
 	register int counter = 0;
 
@@ -17,8 +17,8 @@ int print_address(va_list list, flags_typ *p)
 
 	if (!a)
 		return (_puts("(nil)"));
-	str = convert(p, 16, 1);
-	counter = counter + _puts("0x");
-	count = counter + _puts(str);
+	str = convert(a, 16, 1);
+	counter += _puts("0x");
+	counter += _puts(str);
 	return (counter);
 }

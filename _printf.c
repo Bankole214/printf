@@ -31,14 +31,14 @@ int _printf(const char *format, ...)
 				counter = counter + _putchar('%');
 				continue;
 			}
-			while (get_flag(*chr, &flags))
+			while (get_flag_on(*chr, &flags))
 				chr++;
 			funptr = get_print(*chr);
-			count += (funptr)
+			counter += (funptr)
 				? funptr(args, &flags)
 				: _printf("%%%c", *chr);
 		} else
-			count = count + _putchar(*chr);
+			counter = counter + _putchar(*chr);
 	}
 	_putchar(-1);
 	va_end(args);

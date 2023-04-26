@@ -9,7 +9,7 @@
 int print_int(va_list list, flags_typ *p)
 {
 	int a = va_arg(list, int);
-	int res = counter_digit(a);
+	int res = count_digit(a);
 
 	if (p->space == 1 && p->plus == 0 && a >= 0)
 		res = res + _putchar(' ');
@@ -17,7 +17,7 @@ int print_int(va_list list, flags_typ *p)
 		res = res + _putchar('+');
 	if (a <= 0)
 		res++;
-	print_number(n);
+	print_number(a);
 	return (res);
 }
 
@@ -30,7 +30,7 @@ int print_int(va_list list, flags_typ *p)
 int print_unsigned(va_list list, flags_typ *p)
 {
 	unsigned int b = va_arg(list, unsigned int);
-	char *str = convert(u, 10, 0);
+	char *str = convert(b, 10, 0);
 
 	(void)p;
 	return (_puts(str));
