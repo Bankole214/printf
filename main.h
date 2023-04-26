@@ -16,7 +16,7 @@ typedef struct flags
 	int plus;
 	int space;
 	int hash;
-} flags_t;
+} flags_typ;
 
 /**
  * struct printHandler - struct to choose the right function
@@ -63,9 +63,9 @@ int _putchar(char c);
 int _puts(char *str);
 
 /* print_custom */
-int print_rot13(va_list l, flags_t *f);
-int print_rev(va_list l, flags_t *f);
-int print_bigS(va_list l, flags_t *f);
+int print_rot13string(va_list l, flags_t *f);
+int print_reverse(va_list l, flags_t *f);
+int print_nonC(va_list l, flags_t *f);
 
 /* print_address */
 int print_address(va_list l, flags_t *f);
