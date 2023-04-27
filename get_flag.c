@@ -15,15 +15,15 @@ int get_flag(char s, flags_type *f)
 	switch (s)
 	{
 		case '+':
-			f -> plus = 1;
+			f->plus = 1;
 			a = 1;
 			break;
 		case ' ':
-			f -> space = 1;
+			f->space = 1;
 			a = 1;
 			break;
 		case '#':
-			f -> hash = 1;
+			f->hash = 1;
 			a = 1;
 			break;
 	}
