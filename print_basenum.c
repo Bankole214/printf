@@ -20,7 +20,7 @@ int print_hex(va_list l, flags_type *f)
 }
 
 /**
- * print_hex_big - prints a number in hexadecimal base,
+ * print_hex_upper - prints a number in hexadecimal base,
  * in uppercase
  * @l: va_list arguments from _printf
  * @f: pointer to the struct
