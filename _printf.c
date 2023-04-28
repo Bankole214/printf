@@ -30,17 +30,21 @@ int _printf(const char *format, ...)
 				count += _putchar('%');
 				continue;
 			}
+
+			/* look for flags*/
 			while (get_flag(*p, &flags))
 				p++;
+			/* find the corresponding print function*/
 			pfunc = get_print(*p);
+			/*call the print function*/
 			count += (pfunc)
 				? pfunc(arguments, &flags)
-				: _printf("%%%c", *p);
+				: _printf("%%%c", *p);/* handle the invalid specifiers*/
 		} else
 			count += _putchar(*p);
 	}
 	_putchar(-1);
+	/* add a null terminator*/
 	va_end(arguments);
 	return (count);
-
 }

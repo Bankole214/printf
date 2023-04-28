@@ -4,11 +4,23 @@
 #include <stdlib.h>
 #include <stdarg.h>
 /**
+* This main.h file defines structures to hold flags
+* and functions used in printing. It includes functions for printing
+* integers, unsigned integers, hexadecimal numbers, binary numbers,
+* and octal numbers. It also contains functions for converting
+* numbers between bases and for printing characters and strings.
+* it provides options for unique formatting such
+* as ROT13 encoding and printing addresses.
+* there is also a function for printing the percent sign.
+*/
+
+/**
  * struct flags - struct containing flags to "turn on"
  * when a flag specifier is passed to _printf()
  * @plus: flag for the '+' character
  * @space: flag for the ' ' character
  * @hash: flag for the '#' character
+ * 
  */
 typedef struct flags
 {

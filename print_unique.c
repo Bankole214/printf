@@ -12,12 +12,17 @@ int print_upperS(va_list l, flags_type *f)
 	char *res;
 	char *s = va_arg(l, char *);
 
+	 /* Ignore flags*/
 	(void)f;
+
+	/* If string is == null, print "(null)" and return its length*/
 	if (!s)
 		return (_puts("(null)"));
 
 	for (i = 0; s[i]; i++)
 	{
+
+		/* If it's a non-printable char, print its escape sequence*/
 		if (s[i] > 0 && (s[i] < 32 || s[i] >= 127))
 		{
 			_puts("\\x");
@@ -27,6 +32,8 @@ int print_upperS(va_list l, flags_type *f)
 				count += _putchar('0');
 			count += _puts(res);
 		}
+
+		/* Otherwise, just print the char*/
 		else
 			count += _putchar(s[i]);
 	}
@@ -44,12 +51,19 @@ int print_reverse(va_list l, flags_type *f)
 	int i = 0, j;
 	char *s = va_arg(l, char *);
 
+	/* Ignore flags*/
 	(void)f;
+
+	/* If string is == null, use "(null)"*/
 	if (!s)
 		s = "(null)";
 
+	/* Get length of string*/
+
 	while (s[i])
 		i++;
+
+	 /* Print the chars in reverse order*/
 
 	for (j = i - 1; j >= 0; j--)
 		_putchar(s[j]);
@@ -71,10 +85,16 @@ int print_rot13string(va_list l, flags_type *f)
 	char *s = va_arg(l, char *);
 
 	(void)f;
+
+	/* For each char in the string*/
 	for (j = 0; s[j]; j++)
 	{
+
+		/* If it's not a letter, print it as is*/
 		if (s[j] < 'A' || (s[j] > 'Z' && s[j] < 'a') || s[j] > 'z')
 			_putchar(s[j]);
+
+		/* else, apply the rot13 encoding*/
 		else
 		{
 			for (i = 0; i <= 52; i++)
@@ -96,6 +116,8 @@ int print_rot13string(va_list l, flags_type *f)
  */
 int print_percent(va_list l, flags_type *f)
 {
+
+	/* Ignore arguments and flags*/
 	(void)l;
 	(void)f;
 	return (_putchar('%'));
